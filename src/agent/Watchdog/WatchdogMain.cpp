@@ -164,6 +164,9 @@ static void cleanup(const WorkingObjectsPtr &wo);
 
 static FILE *
 openOomAdjFileGetType(const char *mode, OomFileType &type) {
+#if BOOST_OS_MACOS
+	return NULL;
+#else
 	FILE *f = fopen("/proc/self/oom_score_adj", mode);
 	if (f == NULL) {
 		f = fopen("/proc/self/oom_adj", mode);
@@ -177,16 +180,21 @@ openOomAdjFileGetType(const char *mode, OomFileType &type) {
 		type = OOM_SCORE_ADJ;
 		return f;
 	}
+#endif
 }
 
 static FILE *
 openOomAdjFileForcedType(const char *mode, OomFileType &type) {
+#if BOOST_OS_MACOS
+	return NULL;
+#else
 	if (type == OOM_SCORE_ADJ) {
 		return fopen("/proc/self/oom_score_adj", mode);
 	} else {
 		assert(type == OOM_ADJ);
 		return fopen("/proc/self/oom_adj", mode);
 	}
+#endif
 }
 
 /**

@@ -92,6 +92,10 @@ tryRestoreOomScore(const StaticString &scoreString, bool &isLegacy) {
 	size_t written = 0;
 	StaticString score;
 
+#if BOOST_OS_MACOS
+	return ENOENT;
+#endif
+
 	if (scoreString.at(0) == 'l') {
 		isLegacy = true;
 		score = scoreString.substr(1);

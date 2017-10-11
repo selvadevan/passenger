@@ -13,6 +13,7 @@ Release 5.1.11 (Not yet released)
  * Removes Debian packages for Ubuntu 12.04 Precise.
  * Fixes compilation warnings on macOS + Clang 9.0.
  * Introduces a new check that logs a vulnerability warning if Passenger is run with root permissions while the directory permissions of (parts of) its root dir allow modifications by non-root users.
+ * No longer attempts to open `/proc/self/` on macOS.
 
 
 Release 5.1.10
