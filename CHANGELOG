@@ -1,6 +1,7 @@
 Release 5.1.12 (Not yet released)
 ---------------------------------
 
+ * Fixes a case in which -- when Passenger is configured with user switching turned off -- it is unable to open the web server log file and aborts during startup. This regression was introduced in 5.1.8. Closes GH-1990.
 
 
 Release 5.1.11
