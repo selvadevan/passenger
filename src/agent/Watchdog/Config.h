@@ -272,6 +272,7 @@ public:
 		core.translator.add("core_authorizations", "authorizations");
 		core.translator.add("core_password", "password");
 		core.translator.add("core_pid_file", "pid_file");
+		core.translator.add("core_file_descriptor_ulimit", "file_descriptor_ulimit");
 		core.translator.finalize();
 		addSubSchema(core.schema, core.translator);
 		erase("instance_dir");
